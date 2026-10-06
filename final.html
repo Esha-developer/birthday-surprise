@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>One Last Surprise 🎁</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            background: linear-gradient(
+                135deg,
+                #ffe3ef,
+                #f5e5ff,
+                #e2f5ff,
+                #fff0d9
+            );
+            overflow-x: hidden;
+            color: #634b5c;
+        }
+
+        /* Floating Decorations */
+        .float {
+            position: fixed;
+            bottom: -40px;
+            font-size: 25px;
+            animation: floatUp 8s linear infinite;
+            opacity: 0.75;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .float:nth-child(1) {
+            left: 8%;
+            animation-delay: 0s;
+        }
+
+        .float:nth-child(2) {
+            left: 22%;
+            animation-delay: 2s;
+        }
+
+        .float:nth-child(3) {
+            left: 40%;
+            animation-delay: 4s;
+        }
+
+        .float:nth-child(4) {
+            left: 60%;
+            animation-delay: 1s;
+        }
+
+        .float:nth-child(5) {
+            left: 78%;
+            animation-delay: 3s;
+        }
+
+        .float:nth-child(6) {
+            left: 92%;
+            animation-delay: 5s;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Main */
+        .container {
+            width: 92%;
+            max-width: 900px;
+            margin: auto;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 50px 0;
+            position: relative;
+            z-index: 5;
+        }
+
+        .card {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.82);
+            border-radius: 35px;
+            padding: 45px 30px;
+            text-align: center;
+            box-shadow: 0 20px 55px rgba(120, 70, 100, 0.18);
+            border: 3px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .small-title {
+            font-size: 18px;
+            color: #b96791;
+            margin-bottom: 10px;
+        }
+
+        .main-title {
+            font-size: 45px;
+            color: #d25f94;
+            margin-bottom: 15px;
+            animation: titlePulse 2.5s ease-in-out infinite;
+        }
+
+        @keyframes titlePulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.03);
+            }
+        }
+
+        .subtitle {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #765b6d;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        /* Gift */
+        .gift-area {
+            margin: 35px auto;
+        }
+
+        .gift {
+            position: relative;
+            width: 180px;
+            height: 150px;
+            margin: auto;
+            cursor: pointer;
+            transition: 0.3s ease;
+            animation: giftBounce 2s ease-in-out infinite;
+        }
+
+        .gift:hover {
+            transform: scale(1.08);
+        }
+
+        @keyframes giftBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .gift-box {
+            position: absolute;
+            width: 150px;
+            height: 105px;
+            bottom: 0;
+            left: 15px;
+            background: #f59abc;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(190, 90, 130, 0.2);
+        }
+
+        .gift-box::before {
+            content: "";
+            position: absolute;
+            width: 25px;
+            height: 105px;
+            left: 62px;
+            background: #f8d36b;
+        }
+
+        .gift-lid {
+            position: absolute;
+            width: 170px;
+            height: 35px;
+            left: 5px;
+            bottom: 90px;
+            background: #ee83ab;
+            border-radius: 8px;
+            z-index: 3;
+        }
+
+        .gift-lid::before {
+            content: "";
+            position: absolute;
+            width: 25px;
+            height: 35px;
+            left: 72px;
+            background: #f8d36b;
+        }
+
+        .ribbon-left,
+        .ribbon-right {
+            position: absolute;
+            width: 50px;
+            height: 30px;
+            border: 8px solid #f8d36b;
+            border-radius: 50%;
+            top: -22px;
+            z-index: 5;
+        }
+
+        .ribbon-left {
+            left: 48px;
+            transform: rotate(-25deg);
+        }
+
+        .ribbon-right {
+            right: 48px;
+            transform: rotate(25deg);
+        }
+
+        /* Message */
+        .message {
+            display: none;
+            animation: appear 1s ease forwards;
+        }
+
+        .message.show {
+            display: block;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message h2 {
+            color: #d25f94;
+            font-size: 34px;
+            margin-bottom: 18px;
+        }
+
+        .message p {
+            font-size: 18px;
+            line-height: 1.9;
+            color: #6e5667;
+            max-width: 650px;
+            margin: auto;
+        }
+
+        .stars {
+            font-size: 30px;
+            margin: 20px 0;
+        }
+
+        /* Button */
+        .open-btn {
+            border: none;
+            padding: 15px 35px;
+            border-radius: 30px;
+            background: #d875a2;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(216, 117, 162, 0.3);
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .open-btn:hover {
+            transform: scale(1.06);
+            background: #c95e8e;
+        }
+
+        /* Final Note */
+        .final-note {
+            margin-top: 30px;
+            padding: 25px;
+            border-radius: 25px;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 225, 237, 0.9),
+                rgba(239, 225, 255, 0.9)
+            );
+        }
+
+        .final-note h3 {
+            color: #c95d90;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .final-note p {
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        /* Back Button */
+        .back-btn {
+            display: inline-block;
+            margin-top: 30px;
+            text-decoration: none;
+            color: #b65c87;
+            font-weight: bold;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+
+        .back-btn:hover {
+            background: #ffe2ee;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 16px;
+            top: -30px;
+            z-index: 10;
+            pointer-events: none;
+            animation: confettiFall 3s linear forwards;
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+
+            .container {
+                padding: 25px 0;
+            }
+
+            .card {
+                padding: 35px 20px;
+                border-radius: 28px;
+            }
+
+            .main-title {
+                font-size: 34px;
+            }
+
+            .subtitle {
+                font-size: 16px;
+            }
+
+            .message h2 {
+                font-size: 28px;
+            }
+
+            .message p {
+                font-size: 16px;
+            }
+
+            .gift {
+                transform: scale(0.9);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Floating Decorations -->
+    <div class="float">💗</div>
+    <div class="float">🌸</div>
+    <div class="float">✨</div>
+    <div class="float">💕</div>
+    <div class="float">🎀</div>
+    <div class="float">💖</div>
+
+
+    <div class="container">
+
+        <div class="card">
+
+            <div class="small-title">
+                ✨ One Last Surprise ✨
+            </div>
+
+            <h1 class="main-title">
+                Something Special For You 💕
+            </h1>
+
+            <p class="subtitle">
+                You made it all the way here...
+                so there is just one little surprise left. 🎁
+            </p>
+
+
+            <!-- Gift -->
+            <div class="gift-area">
+
+                <div class="gift" id="gift" onclick="openGift()">
+
+                    <div class="ribbon-left"></div>
+                    <div class="ribbon-right"></div>
+
+                    <div class="gift-lid"></div>
+
+                    <div class="gift-box"></div>
+
+                </div>
+
+            </div>
+
+
+            <button class="open-btn" onclick="openGift()">
+                🎁 Open Your Surprise
+            </button>
+
+
+            <!-- Hidden Message -->
+            <div class="message" id="message">
+
+                <div class="stars">
+                    ✨ 💕 🎉 💕 ✨
+                </div>
+
+                <h2>
+                    Happy Birthday! 🎂
+                </h2>
+
+                <p>
+                    May your life always be filled with beautiful
+                    moments, genuine smiles, exciting adventures
+                    and people who make your days brighter. 🌸
+                </p>
+
+                <br>
+
+                <p>
+                    Keep smiling, keep shining and keep making
+                    wonderful memories wherever life takes you. 💖
+                </p>
+
+
+                <div class="final-note">
+
+                    <h3>
+                        🌷 A Little Birthday Note 🌷
+                    </h3>
+
+                    <p>
+                        Here's to another year of laughter,
+                        happiness, unforgettable memories
+                        and lots of reasons to smile.
+                        <br><br>
+                        Wishing you the happiest birthday
+                        and an amazing year ahead! 🎀✨
+                    </p>
+
+                </div>
+
+
+                <div class="stars">
+                    🌸 💗 🌸 💗 🌸
+                </div>
+
+            </div>
+
+
+            <a href="memories.html" class="back-btn">
+                ← Back to Memories
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <script>
+
+        function openGift() {
+
+            const message = document.getElementById("message");
+            const gift = document.getElementById("gift");
+
+            message.classList.add("show");
+
+            gift.style.animation = "none";
+            gift.style.transform = "scale(0.9)";
+
+            document.querySelector(".open-btn").style.display = "none";
+
+            createConfetti();
+
+            setTimeout(function() {
+                message.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+            }, 300);
+        }
+
+
+        function createConfetti() {
+
+            const symbols = [
+                "💗",
+                "💕",
+                "✨",
+                "🌸",
+                "🎀",
+                "💖",
+                "⭐"
+            ];
+
+            for (let i = 0; i < 45; i++) {
+
+                const piece = document.createElement("div");
+
+                piece.className = "confetti";
+
+                piece.innerHTML =
+                    symbols[Math.floor(Math.random() * symbols.length)];
+
+                piece.style.left =
+                    Math.random() * 100 + "vw";
+
+                piece.style.fontSize =
+                    (12 + Math.random() * 16) + "px";
+
+                piece.style.animationDuration =
+                    (2 + Math.random() * 2) + "s";
+
+                piece.style.animationDelay =
+                    Math.random() * 0.8 + "s";
+
+                document.body.appendChild(piece);
+
+                setTimeout(function() {
+                    piece.remove();
+                }, 4500);
+            }
+        }
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Beautiful Memories 💕</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Trebuchet MS", Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(
+                135deg,
+                #ffe4ec,
+                #fcecff,
+                #e8f5ff,
+                #fff1dc
+            );
+            color: #5c4050;
+            overflow-x: hidden;
+        }
+
+        /* Floating Hearts */
+        .heart {
+            position: fixed;
+            bottom: -30px;
+            font-size: 22px;
+            animation: floatUp 7s linear infinite;
+            opacity: 0.7;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .heart:nth-child(1) {
+            left: 10%;
+            animation-delay: 1s;
+        }
+
+        .heart:nth-child(2) {
+            left: 30%;
+            animation-delay: 3s;
+        }
+
+        .heart:nth-child(3) {
+            left: 55%;
+            animation-delay: 2s;
+        }
+
+        .heart:nth-child(4) {
+            left: 75%;
+            animation-delay: 4s;
+        }
+
+        .heart:nth-child(5) {
+            left: 90%;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            20% {
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* Main Container */
+        .container {
+            width: 92%;
+            max-width: 1150px;
+            margin: auto;
+            padding: 50px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            color: #d86b9d;
+            margin-bottom: 12px;
+            text-shadow: 2px 2px 8px rgba(216, 107, 157, 0.2);
+        }
+
+        .header p {
+            font-size: 18px;
+            color: #806276;
+        }
+
+        .sparkle {
+            font-size: 25px;
+        }
+
+        /* Memory Cards */
+        .memories {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .memory-card {
+            background: rgba(255, 255, 255, 0.82);
+            border-radius: 25px;
+            padding: 15px;
+            box-shadow: 0 12px 30px rgba(120, 70, 100, 0.15);
+            transition: 0.35s ease;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+        }
+
+        .memory-card:hover {
+            transform: translateY(-10px) rotate(1deg);
+            box-shadow: 0 18px 35px rgba(120, 70, 100, 0.22);
+        }
+
+        .memory-card img {
+            width: 100%;
+            height: 330px;
+            object-fit: cover;
+            border-radius: 18px;
+            display: block;
+        }
+
+        .memory-content {
+            padding: 20px 10px 12px;
+            text-align: center;
+        }
+
+        .memory-content h2 {
+            color: #d86b9d;
+            font-size: 23px;
+            margin-bottom: 10px;
+        }
+
+        .memory-content p {
+            color: #765c70;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+
+        /* Poetry */
+        .poetry {
+            margin-top: 50px;
+            padding: 35px 25px;
+            background: rgba(255, 255, 255, 0.78);
+            border-radius: 28px;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(120, 70, 100, 0.12);
+        }
+
+        .poetry h2 {
+            color: #d86b9d;
+            font-size: 30px;
+            margin-bottom: 20px;
+        }
+
+        .poetry p {
+            font-size: 19px;
+            line-height: 2;
+            color: #76556d;
+        }
+
+        /* Birthday Wish */
+        .wish {
+            margin-top: 35px;
+            padding: 40px 25px;
+            border-radius: 30px;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 220, 235, 0.9),
+                rgba(239, 222, 255, 0.9)
+            );
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(120, 70, 100, 0.13);
+        }
+
+        .wish h2 {
+            color: #c9568c;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+
+        .wish p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #684f61;
+        }
+
+        .cake {
+            font-size: 55px;
+            margin-bottom: 12px;
+        }
+
+        /* Buttons */
+        .buttons {
+            text-align: center;
+            margin-top: 35px;
+        }
+
+        .back-btn {
+            display: inline-block;
+            margin: 8px;
+            padding: 14px 30px;
+            background: #d978a5;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+            box-shadow: 0 7px 18px rgba(217, 120, 165, 0.3);
+        }
+
+        .back-btn:hover {
+            background: #c85f91;
+            transform: translateY(-3px) scale(1.03);
+        }
+
+        /* Mobile */
+        @media (max-width: 850px) {
+
+            .memories {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 38px;
+            }
+
+            .memory-card img {
+                height: 360px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .container {
+                padding: 35px 0;
+            }
+
+            .header h1 {
+                font-size: 31px;
+            }
+
+            .header p {
+                font-size: 15px;
+            }
+
+            .memory-card img {
+                height: 300px;
+            }
+
+            .poetry p {
+                font-size: 17px;
+            }
+
+            .wish h2 {
+                font-size: 27px;
+            }
+
+            .back-btn {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Floating Hearts -->
+    <div class="heart">💗</div>
+    <div class="heart">💕</div>
+    <div class="heart">💖</div>
+    <div class="heart">🌸</div>
+    <div class="heart">💗</div>
+
+
+    <div class="container">
+
+        <!-- Header -->
+        <div class="header">
+
+            <div class="sparkle">
+                ✨ 💕 ✨
+            </div>
+
+            <h1>
+                Beautiful Memories
+            </h1>
+
+            <p>
+                Some moments become memories that we always keep close to our hearts 🌸
+            </p>
+
+        </div>
+
+
+        <!-- Memories -->
+        <div class="memories">
+
+
+            <!-- Memory 1 -->
+            <div class="memory-card">
+
+                <img
+                    src="https://i.pinimg.com/736x/4e/b2/03/4eb203580efbe4b4bb5607f52014537f.jpg"
+                    alt="Beautiful Friendship Memory 1"
+                >
+
+                <div class="memory-content">
+
+                    <h2>
+                        Little Moments 💗
+                    </h2>
+
+                    <p>
+                        The silly talks, the random plans,
+                        the endless laughs and all those
+                        little moments that become special memories. ✨
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Memory 2 -->
+            <div class="memory-card">
+
+                <img
+                    src="https://i.pinimg.com/736x/a7/79/81/a779813c997b9b61bc7d261a39c9dc30.jpg"
+                    alt="Beautiful Friendship Memory 2"
+                >
+
+                <div class="memory-content">
+
+                    <h2>
+                        Best Memories 🌸
+                    </h2>
+
+                    <p>
+                        Life becomes a little brighter,
+                        funnier and happier when good
+                        friends are around. 💕
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- Memory 3 -->
+            <div class="memory-card">
+
+                <img
+                    src="https://i.pinimg.com/1200x/e2/14/71/e2147180245063ee23a71318bc9775ad.jpg"
+                    alt="Beautiful Friendship Memory 3"
+                >
+
+                <div class="memory-content">
+
+                    <h2>
+                        Forever Memories ✨
+                    </h2>
+
+                    <p>
+                        Different days, different adventures,
+                        but the beautiful memories always
+                        stay special. 💖
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Urdu Poetry -->
+        <div class="poetry">
+
+            <h2>
+                🌷 ایک خوبصورت دعا 🌷
+            </h2>
+
+            <p>
+                تمہاری ہر صبح مسکراہٹ سے سجے،<br>
+                ہر دن خوشیوں سے بھرا رہے،<br>
+                اور زندگی تمہیں وہ سب دے<br>
+                جس کی تم دل سے خواہش کرو۔ ✨
+            </p>
+
+        </div>
+
+
+        <!-- Birthday Wish -->
+        <div class="wish">
+
+            <div class="cake">
+                🎂
+            </div>
+
+            <h2>
+                Happy Birthday! 🎉
+            </h2>
+
+            <p>
+                May your special day be filled with happiness,
+                laughter, beautiful memories and lots of wonderful moments.
+                <br>
+                Keep smiling, keep shining and always stay amazing! 💕✨
+            </p>
+
+        </div>
+
+
+        <!-- Buttons -->
+        <div class="buttons">
+
+            <!-- FINAL SURPRISE BUTTON -->
+            <a href="final.html" class="back-btn">
+                🎁 One More Surprise
+            </a>
+
+            <!-- BACK BUTTON -->
+            <a href="index.html" class="back-btn">
+                ← Back to Surprise
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
